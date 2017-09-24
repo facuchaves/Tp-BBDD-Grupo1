@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Pokemon AlGo III</title>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<!-- Material Design Bootstrap -->
+	<link href="css/bootstrap/mdb.min.css" rel="stylesheet">
+	<!-- Your custom styles (optional) -->
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="icon" href="img/pokebolas/pokebola.png">
+	<!-- SCRIPTS -->
+	<!-- JQuery -->
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<!-- Bootstrap core JavaScript -->
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					  <span class="navbar-toggler-icon"></span>
+					</button>
+		<a class="navbar-brand" href="#">Navbar</a>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Link</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link disabled" href="#">Disabled</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+
+	<div class="container-fluid d-inline-block">
+		<div class="col-xs-12 col-md-4 floatLeft">
+			<div class="d-flex justify-content-center botonera col-6 mx-auto">
+				<table>
+					<tr>
+						<td></td>
+						<td><button type="button" class="btn mdb-color indigo btn-lg">N</button></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><button type="button" class="btn mdb-color indigo btn-lg">O</button></td>
+						<td></td>
+						<td><button type="button" class="btn mdb-color indigo btn-lg">E</button></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><button type="button" class="btn mdb-color indigo btn-lg">S</button></td>
+						<td></td>
+					</tr>
+				</table>
+			</div>
+			<div class="row col-12 d-flex justify-content-center">
+				<i class="fa fa-map-marker" aria-hidden="true"></i> 34.504, -52.807
+			</div>
+		</div>
+
+
+		<div class="col-xs-12 col-md-8 floatLeft">
+			<div class="row d-flex justify-content-center">
+				<div class="d-inline-block col-xs-12 col-md-10">
+					<span class="titulo-tabla">Oponentes</span>
+					<table class="table table-hover table-bordered table-sm tabla-general">
+						<thead class="mdb-color indigo">
+							<tr>
+								<th><strong>Entrenador</strong></th>
+								<th><strong>Pokémon</strong></th>
+								<th><strong>Apuesta</strong></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Ash Ketchum<img src="img/entrenadores/ash.jpg" class="imagenTabla img-fluid rounded-circle" /></td>
+								<td>Pikachu lvl 5 <img src="img/pokemones/pikachu.png" class="imagenTabla img-fluid rounded-circle" /> </td>
+								<td>$50</td>
+								<td class="icono-celda">
+									<i class="fa fa-group" aria-hidden="true"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>Gary Oak <img src="img/entrenadores/garyOak.jpg" class="imagenTabla img-fluid rounded-circle" /> </td>
+								<td>Snorlax lvl 5 <img src="img/pokemones/snorlax.png" class="imagenTabla img-fluid rounded-circle" /></td>
+								<td>$100</td>
+								<td class="icono-celda">
+									<i class="fa fa-group" aria-hidden="true"></i>
+								</td>
+							</tr>
+							<tr>
+								<td>Misty La Colo <img src="img/entrenadores/misty.png" class="imagenTabla img-fluid rounded-circle" /></td>
+								<td>Meowth lvl 50 <img src="img/pokemones/meowth.png" class="imagenTabla img-fluid rounded-circle" /></td>
+								<td>$30</td>
+								<td class="icono-celda">
+									<i class="fa fa-group" aria-hidden="true"></i>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12 col-md-6 d-inline-block">
+					<span class="titulo-tabla">Pokémon salvajes</span>
+					<table class="table table-hover table-bordered table-sm tabla-general">
+						<thead class="mdb-color indigo">
+							<tr>
+								<th><strong>Pokémon</strong></th>
+								<th><strong>Nivel</strong></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Squirtle <img src="img/pokemones/squirtle.png" class="imagenTabla img-fluid rounded-circle" /></td>
+								<td>5</td>
+								<td class="icono-celda">
+									<img src="img/pokebolas/pokebola.png" alt="TP Pokemon Al GO 3 - maquetado" class="imagenTabla">
+								</td>
+							</tr>
+							<tr>
+								<td>Charizard <img src="img/pokemones/charizard.png" class="imagenTabla img-fluid rounded-circle" /> </td>
+								<td>14</td>
+								<td class="icono-celda">
+									<img src="img/pokebolas/pokebola.png" alt="TP Pokemon Al GO 3 - maquetado" class="imagenTabla">
+								</td>
+							</tr>
+							<tr>
+								<td>Bulbasaur <img src="img/pokemones/bulbasaur.png" class="imagenTabla img-fluid rounded-circle" /> </td>
+								<td>25</td>
+								<td class="icono-celda">
+									<img src="img/pokebolas/pokebola.png" alt="TP Pokemon Al GO 3 - maquetado" class="imagenTabla">
+								</td>
+							</tr>
+							<tr>
+								<td>psyduck <img src="img/pokemones/psyduck.png" class="imagenTabla img-fluid rounded-circle" /> </td>
+								<td>25</td>
+								<td class="icono-celda">
+									<img src="img/pokebolas/pokebola.png" alt="TP Pokemon Al GO 3 - maquetado" class="imagenTabla">
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+
+				<div class="col-xs-12 col-md-6 d-inline-block">
+					<span class="titulo-tabla">Pokeparadas</span>
+					<table class="table table-hover table-bordered table-sm tabla-general">
+						<thead class="mdb-color indigo">
+							<tr>
+								<th><strong>Pokeparada</strong></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>UNSAM</td>
+								<td class="icono-celda">
+									<i class="fa fa-plus-circle pokeparada" aria-hidden="true"></i>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--Footer-->
+	<footer class="page-footer indigo center-on-small-only pt-0">
+
+		<!--Footer Links-->
+		<div class="container">
+
+			<!--First row-->
+			<div class="row">
+
+				<!--First column-->
+				<div class="col-md-12">
+
+					<div class="footer-socials flex-center footerSocial">
+
+						<!--Facebook-->
+						<a class="icons-sm fb-ic"><i class="fa fa-facebook fa-lg white-text mr-md-4"> </i></a>
+						<!--Twitter-->
+						<a class="icons-sm tw-ic"><i class="fa fa-twitter fa-lg white-text mr-md-4"> </i></a>
+						<!--Google +-->
+						<a class="icons-sm gplus-ic"><i class="fa fa-google-plus fa-lg white-text mr-md-4"> </i></a>
+						<!--Linkedin-->
+						<a class="icons-sm li-ic"><i class="fa fa-linkedin fa-lg white-text mr-md-4"> </i></a>
+						<!--Instagram-->
+						<a class="icons-sm ins-ic"><i class="fa fa-instagram fa-lg white-text mr-md-4"> </i></a>
+						<!--Pinterest-->
+						<a class="icons-sm pin-ic"><i class="fa fa-pinterest fa-lg white-text"> </i></a>
+					</div>
+				</div>
+				<!--/First column-->
+			</div>
+			<!--/First row-->
+
+			<!--Grid row-->
+			<div class="row pt-5 mb-3 text-center d-flex justify-content-center">
+
+				<!--Grid column-->
+				<div class="col-md-2 mb-3">
+					<h6 class="title font-bold"><a href="#!">About us</a></h6>
+				</div>
+				<!--Grid column-->
+				<div class="col-md-2 mb-3">
+					<h6 class="title font-bold"><a href="#!">Contact</a></h6>
+				</div>
+
+			</div>
+			<!--Grid row-->
+
+			<hr class="rgba-white-light" style="margin: 0 15%;">
+
+			<!--Grid row-->
+			<div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
+
+				<!--Grid column-->
+				<div class="col-md-8 col-12 mt-5">
+					<p style="line-height: 1.7rem">Tp de interface grafica de Pokemon Go</p>
+
+				</div>
+				<!--Grid column-->
+
+			</div>
+			<!--Grid row-->
+
+			<hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
+
+		</div>
+		<!--/Footer Links-->
+
+		<!--Copyright-->
+		<div class="footer-copyright">
+			<div class="container-fluid">
+				© 2017 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+			</div>
+		</div>
+		<!--/Copyright-->
+
+	</footer>
+	<!--/Footer-->
+
+</body>
+
+</html>

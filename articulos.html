@@ -33,12 +33,15 @@
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html"><i class="fa fa-map-marker" aria-hidden="true"></i> Recetas </a>
+                    <a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="recetas.html"><i class="fa fa-book" aria-hidden="true"></i> Recetas </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="entrenadores.html"><i class="fa fa-navicon" aria-hidden="true"></i> Articulos <span class="sr-only">(current)</span> </a>
+                    <a class="nav-link" href="articulos.html"><i class="fa fa-navicon" aria-hidden="true"></i> Articulos <span class="sr-only">(current)</span> </a>
                 </li>
             </ul>
         </div>
@@ -49,89 +52,103 @@
 
             <div class="col-md-4 d-inline-block floatLeft">
 
-                <div>
+                <!--Card-->
+                <div class="card">
+                    <!--Card content-->
+                    <div class="card-body">
+                        <div>
+                            <!-- Contextual button for informational alert messages -->
+                            <button type="button" class="btn btn-info">Agrupar por Categoria</button>
 
-                    <div class="row">
-                        <div class="d-inline-block table-responsive col-10">
-                            <span class="titulo-tabla">Articulos</span>
-                            <table class="table table-hover table-bordered table-sm tabla-general">
-                                <thead class="mdb-color indigo">
-                                    <tr>
-                                        <th><strong>Categoria</strong></th>
-                                        <th><strong>Articulo</strong></th>
-                                        <th><strong>Carga</strong></th>
-                                        <th><strong>Unidad</strong></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Lacteos <img src="img/lacteos.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Leche <img src="img/leche.png" class="imagenTabla img-fluid " /></td>
-                                        <td> 10 </td>
-                                        <td> Litros </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lacteos <img src="img/lacteos.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Yogurt <img src="img/yogurt.png" class="imagenTabla img-fluid " /></td>
-                                        <td> 9 </td>
-                                        <td> Litros </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lacteos <img src="img/lacteos.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Queso <img src="img/queso.png" class="imagenTabla img-fluid " /></td>
-                                        <td> 8 </td>
-                                        <td> Litros </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Lacteos <img src="img/lacteos.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Manteca <img src="img/manteca.png" class="imagenTabla img-fluid " /></td>
-                                        <td> 7 </td>
-                                        <td> Litros </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carnes <img src="img/carnes.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Carne Roja <img src="img/carneroja.png" class="imagenTabla img-fluid " /></td>
-                                        <td> 10 </td>
-                                        <td> Kilos </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carnes <img src="img/carnes.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Pollo <img src="img/pollo.png" class="imagenTabla img-fluid " /> </td>
-                                        <td> 5 </td>
-                                        <td> Kilos </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carnes <img src="img/carnes.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Bondiola <img src="img/carnecerdo.png" class="imagenTabla img-fluid " /> </td>
-                                        <td> 5 </td>
-                                        <td> Kilos </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carnes <img src="img/carnes.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Pescado <img src="img/pescado.png" class="imagenTabla img-fluid " /> </td>
-                                        <td> 5 </td>
-                                        <td> Kilos </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bebidas <img src="img/bebidas.png" class="imagenTabla img-fluid " /> </td>
-                                        <td>Coca-Cola <img src="img/cocacola.png" class="imagenTabla img-fluid " /></td>
-                                        <td> 1 </td>
-                                        <td> Kilo </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Otros</td>
-                                        <td>Huevos <img src="img/huevos.png" class="imagenTabla img-fluid " /> </td>
-                                        <td> 12 </td>
-                                        <td> Unidades </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <!-- Contextual button for informational alert messages -->
+                            <button type="button" class="btn btn-info">Agrupar por Unidad</button>
+                            <div class="row">
+                                <div class="d-inline-block table-responsive col-10">
+                                    <span class="titulo-tabla">Articulos</span>
+                                    <table class="table table-hover table-bordered table-sm tabla-general">
+                                        <thead class="mdb-color indigo">
+                                            <tr>
+                                                <th><strong>Categoria</strong></th>
+                                                <th><strong>Articulo</strong></th>
+                                                <th><strong>Carga</strong></th>
+                                                <th><strong>Unidad</strong></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Lacteos <img src="img/lacteos.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Leche <img src="img/leche.png" class="imagenTabla img-fluid " /></td>
+                                                <td> 10 </td>
+                                                <td> Litros </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Lacteos <img src="img/lacteos.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Yogurt <img src="img/yogurt.png" class="imagenTabla img-fluid " /></td>
+                                                <td> 9 </td>
+                                                <td> Litros </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Lacteos <img src="img/lacteos.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Queso <img src="img/queso.png" class="imagenTabla img-fluid " /></td>
+                                                <td> 8 </td>
+                                                <td> Litros </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Lacteos <img src="img/lacteos.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Manteca <img src="img/manteca.png" class="imagenTabla img-fluid " /></td>
+                                                <td> 7 </td>
+                                                <td> Litros </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Carnes <img src="img/carnes.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Carne Roja <img src="img/carneroja.png" class="imagenTabla img-fluid " /></td>
+                                                <td> 10 </td>
+                                                <td> Kilos </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Carnes <img src="img/carnes.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Pollo <img src="img/pollo.png" class="imagenTabla img-fluid " /> </td>
+                                                <td> 5 </td>
+                                                <td> Kilos </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Carnes <img src="img/carnes.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Bondiola <img src="img/carnecerdo.png" class="imagenTabla img-fluid " />                                                    </td>
+                                                <td> 5 </td>
+                                                <td> Kilos </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Carnes <img src="img/carnes.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Pescado <img src="img/pescado.png" class="imagenTabla img-fluid " /> </td>
+                                                <td> 5 </td>
+                                                <td> Kilos </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Bebidas <img src="img/bebidas.png" class="imagenTabla img-fluid " /> </td>
+                                                <td>Coca-Cola <img src="img/cocacola.png" class="imagenTabla img-fluid " /></td>
+                                                <td> 1 </td>
+                                                <td> Kilo </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otros</td>
+                                                <td>Huevos <img src="img/huevos.png" class="imagenTabla img-fluid " /> </td>
+                                                <td> 12 </td>
+                                                <td> Unidades </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                                <button type="button" class="btn btn-primary"> <a href="index.html"> Volver </a></button>
+                            </div>
 
                         </div>
                     </div>
-
                 </div>
-
 
             </div>
 
@@ -181,7 +198,7 @@
             <!--Copyright-->
             <div class="footer-copyright">
                 <div class="container-fluid">
-                    © 2017 Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
+                    © 2017 Copyright: <a href="https://www.MDBootstrap.com" target="_blank"> MDBootstrap.com </a>
                 </div>
             </div>
             <!--/Copyright-->

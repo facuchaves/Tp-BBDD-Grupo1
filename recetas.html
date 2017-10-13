@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -50,69 +51,115 @@
     <div class="container col-md-12 d-inline-block">
         <div class="d-flex justify-content-center mx-auto">
 
-            <div class="col-md-4 d-inline-block floatLeft">
+            <div class="col-md-6 d-inline-block floatLeft">
                 <div>
                     <div class="row">
                         <!--Card-->
                         <div class="card">
                             <!--Card content-->
                             <div class="card-body">
-                                <div class="d-inline-block table-responsive col-10">
+
+                                <div class="d-inline-block table-responsive col-10 text-justify">
                                     RECETAS
                                 </div>
-                                <div class="row">
-                                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                                    <button type="button" class="btn btn-primary"> <a href="index.html"> Volver </a></button>
+                                <div class="container d-inline-block col-md-12">
+
+                                    <!-- FORMULARIO DE RECETAS -->
+                                    <form class="col-md-12">
+                                        <label>Creación de recetas</label>
+                                        <div class="form-group">
+                                            <label for="titulo">Titulo:</label>
+                                            <input type="text" id="titulo" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Descripcion:</label>
+                                            <textarea class="form-control" rows="5" id="description"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pasos">Pasos:</label>
+                                            <textarea class="form-control" rows="10" id="pasos"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Artíuculos de heladera utilizados</label>
+                                            <!-- deberían ser columnas -->
+                                            <div class="col-6">
+                                                <label for="articles">Seleccionar Artículo:</label>
+                                                <select class="form-control" id="articles">
+                                                    <option>Leche</option>
+                                                    <option>Manteca</option>
+                                                    <option>Huevos</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="cantidad">Cantidad</label>
+                                                <input type="number" name="cantidad" />
+                                                <input type="submit" value="Insertar artículo" />
+                                            </div>
+                                            <div class="row col-12">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                        <tr>
+                                                            <th><font color="black">Articulo</font></th>
+                                                            <th><font color="black">Cantidad</font></th>
+                                                            <th><font color="black">Unidad</font></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Carne Picada</td>
+                                                            <td>1</td>
+                                                            <td>kilo</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Puré de Tomate</td>
+                                                            <td>200</td>
+                                                            <td>gramos</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row col-12">
+                                            <button type="button" class="btn btn-default"> <a href="index.html"> <font color="white">Volver</font> </a></button>
+                                            <button type="submit" class="btn btn-default">Insertar Receta</button>
+                                        </div>
+                                    </form> 
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 
     <div>
-
         <!--Footer-->
         <footer class="page-footer indigo center-on-small-only pt-0">
-
             <!--Footer Links-->
             <div class="container">
-
                 <!--First row-->
                 <!--Grid row-->
                 <div class="row pt-5 mb-3 text-center d-flex justify-content-center">
-
                     <!--Grid column-->
                     <div class="col-md-2 mb-3">
                         <h6 class="title font-bold"><a href="#!">About us</a></h6>
                     </div>
-
                 </div>
                 <!--Grid row-->
-
                 <hr class="rgba-white-light" style="margin: 0 15%;">
-
                 <!--Grid row-->
                 <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
-
                     <!--Grid column-->
                     <div class="col-md-8 col-12 mt-5">
                         <p style="line-height: 1.7rem">Tp de Base de datos.</p>
                     </div>
                     <!--Grid column-->
-
                 </div>
                 <!--Grid row-->
-
                 <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
-
             </div>
             <!--/Footer Links-->
-
             <!--Copyright-->
             <div class="footer-copyright">
                 <div class="container-fluid">
@@ -120,7 +167,6 @@
                 </div>
             </div>
             <!--/Copyright-->
-
         </footer>
         <!--/Footer-->
     </div>

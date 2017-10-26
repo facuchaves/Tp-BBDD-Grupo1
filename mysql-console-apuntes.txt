@@ -1,0 +1,200 @@
+//MySQL por consola
+@by josegerstner
+
+Para abrir el programa se debe ingresar el siguiente comando
+> mysql -u root -p
+NOTA: donde dice root se puede poner el usuario que inicia sesión, nosotros usaremos root para no perder permisos administrativos
+
+luego pedirá la contraseña
+
+si queremos saber a qué PUERTO se conecta:
+> show variables where variable_name in('hostname','port')
+
+ya podemos trabajar :D
+
+crear una base de datos llamada "pruebas":
+> CREATE DATABASE pruebas;
+
+borrar base de datos llamada "pruebas":
+> DROP DATABASE pruebas;
+
+seleccionar la base de datos donde vamos a trabajar (pruebas):
+> USE pruebas;
+
+
+algunos tipos de datos permitidos en los campos:
+INT: -2147483648 hasta 2147483647 (4 bytes)
+FLOAT(M, D): muestra el largo (M) y número de decimales (D) (4 ú 8 bytes)
+DATE: YYYY-MM-DD (3 bytes) // se puede ingresar 'yyyy-mm-dd' ó con funciones como NOW()
+CHAR(M): arreglo de caracteres entre 1 y 255 (4 bytes)
+VARCHAR(M): M+1 bytes
+
+operadores de comparación:
+< <= = != >= >
+operadores lógicos:
+AND OR NOT
+operador de comparación para valor especial NULL:
+IS (consulta IS NULL es lo mismo que decir consulta = NULL)
+
+crear una tabla que se llame "tablapruebas" con los siguientes campos,
+id, nombre y materia:
+> CREATE TABLE tablapruebas(
+                    id int auto_increment,
+                    nombre varchar(255),
+                    materia varchar(255),
+                    primary key (id)
+);
+
+borrar una tabla que se llame "tablapruebas":
+> DROP TABLE tablapruebas;
+
+modificar la tabla "tablapruebas" agregando la columna "notas" con un dato entero 
+que no permita no ingresarlo y que por default sea 0:
+> ALTER TABLE tablapruebas ADD notas INT NOT NULL DEFAULT 0;
+
+modificar la tabla "tablapruebas" agregando la columna "notas" con un dato entero 
+después de la columna nombre:
+> ALTER TABLE tablapruebas ADD notas INT AFTER nombre;
+
+modificar la tabla "tablapruebas" borrando la columna "notas":
+> ALTER TABLE tablapruebas DROP notas;
+
+modificar la tabla "tablapruebas" modificando la columna "notas" para que esté después de materia:
+> ALTER TABLE tablapruebas MODIFY notas INT AFTER materia;
+
+modificar el nombre de la tabla "tablapruebas" a "tabpruebas":
+> ALTER TABLE tablapruebas RENAME tabpruebas;
+
+insertar los datos "maría" que estudia la materia "lengua" en tablapruebas:
+> INSERT INTO tablapruebas
+(nombre, materia)
+VALUES
+("maria", "lengua");
+
+CONSULTAS/QUERIES:
+consultar todo desde la tabla "tablapruebas":
+> SELECT * FROM tablapruebas;
+
+consultar sólo algunos campos (nombre, materia) desde la tabla "tablapruebas":
+> SELECT nombre, materia FROM tablapruebas;
+
+consultar sólo algunos campos (nombre, materia) desde la tabla "tablapruebas"
+donde se cumplan las condiciones id menor o igual a 3 y la materia sea matemática:
+SELECT nombre, materia FROM tablapruebas WHERE id<=3 AND materia='matematica';
+
+mostrar/consultar estructura de una tabla llamada "tablapruebas":
+> SHOW COLUMNS FROM tablapruebas;
+o también
+> DESCRIBE tablapruebas;
+
+ordenar una consulta de la tabla "tablapruebas" por campo "nombre":
+> SELECT * FROM tablapruebas ORDER BY nombre;
+
+se puede ordenar de forma ascendente o descendente:
+> SELECT * FROM tablapruebas ORDER BY nombre ASC;
+> SELECT * FROM tablapruebas ORDER BY nombre DESC;
+
+también se puede elegir la cantidad de datos a traer:
+> SELECT * FROM tablapruebas ORDER BY nombre ASC LIMIT 1; //muestra 1 sólo dato
+> SELECT * FROM tablapruebas ORDER BY nombre ASC LIMIT 10; //muestra hasta 10 datos
+
+borrar un registro de tablapruebas donde el id sea 3:
+> DELETE FROM tablapruebas WHERE id=3;
+
+cambiar/actualizar el nombre de un registro de tablapruebas donde el id sea 3:
+> UPDATE tablapruebas SET nombre = "Roberto" WHERE id=3;
+
+borrar todos los campos de la tabla "tablapruebas":
+> DELETE FROM tablapruebas;
+
+realizar consultas con tablas relacionadas:
+  si tengo una tabla de "Ventas" y otra de "Clientes" y las dos tienen un campo
+  "Clientes_idClientes" e "idClientes" respectivamente y quiero saber las ventas
+  que hubo y quién realizó las ventas, debo tipear:
+> SELECT * FROM Ventas INNER JOIN Clientes ON Ventas.Clientes_idClientes = Clientes.idClientes;
+
+alias, para llamar a una tabla con otro nombre se puede hacer con 'as':
+> SELECT * FROM Ventas as v INNER JOIN Clientes as c ON v.Clientes_idClientes = c.idClientes;
+o también se puede sin el as
+> SELECT * FROM Ventas v INNER JOIN Clientes c ON v.Clientes_idClientes = c.idClientes;
+
+para llamar a las tablas relacionadas se puede utilizar LEFT OUTER JOIN que traerá todos los campos
+que estén en las tablas relacionadas, sin importar si esos registros no tienen relación entre las tablas
+
+consultar cuántos registros hay en la tabla "tablapruebas":
+> SELECT COUNT(*) FROM tablapruebas;
+también puedo elegir un alias 'Total' para mostrar el conteo:
+> SELECT COUNT(*) AS Total FROM tablapruebas;
+también puedo contar cuántas 'Ventas' realizó cada uno de los 'Clientes' agrupando:
+> SELECT COUNT(*), Clientes_idClientes FROM Ventas GROUP BY Clientes_idClientes;
+
+consultar la suma de los 'MontoVenta' de la tabla 'Ventas':
+> SELECT SUM(MontoVenta) FROM Ventas;
+
+consultar el valor máximo de los 'MontoVenta' de la tabla 'Ventas':
+> SELECT MAX(MontoVenta) FROM Ventas;
+
+consultar el valor mínimo de los 'MontoVenta' de la tabla 'Ventas':
+> SELECT MIN(MontoVenta) FROM Ventas;
+
+consultar el promedio de los 'MontoVenta' de la tabla 'Ventas':
+> SELECT AVG(MontoVenta) FROM Ventas;
+
+puedo realizar subconsultas
+  si quiero saber en cuáles ventas se está utilizando el producto con id=3:
+> SELECT * FROM Ventas WHERE idVentas IN(
+           SELECT Ventas_idVentas FROM DetalleVentas WHERE productos_idProductos = 3)
+
+empezar a realizar una transacción:
+> START TRANSACTION;
+
+cancelar una transacción (tiene que ser antes del COMMIT):
+> ROLLBACK;
+
+terminar una transacción:
+> COMMIT;
+
+consultar por un nombre que termine con %ia en la "tablapruebas":
+> SELECT * FROM tablapruebas WHERE nombre LIKE '%ia'; //devolvería a maria y sofia
+
+consultar por un nombre que empiece con jo% en la "tablapruebas":
+> SELECT * FROM tablapruebas WHERE nombre LIKE 'jo%'; //devolvería a jose, jonas y johnatan
+
+consultar por un nombre que contenga %r% en la "tablapruebas":
+> SELECT * FROM tablapruebas WHERE nombre LIKE '%r%'; //devolvería a maria y roberto
+
+operador REGEXP (Expresiones Regulares):
+ver: http://blog.openalfa.com/como-usar-expresiones-regulares-en-mysql
+ó: http://dev.mysql.com/doc/refman/5.7/en/regexp.html
+
+crear un campo índice "indice" para relacionar la tabla "tablapruebas":
+> CREATE (UNIQUE) INDEX index_name ON tablapruebas(indice);
+
+modificar la tabla "tablapruebas" para indicar que el campo "materia" será índice:
+> ALTER TABLE tablapruebas ADD INDEX index_name(materia);
+
+modificar la tabla "tablapruebas" para indicar que el campo "materia" será índice único:
+> ALTER TABLE tablapruebas ADD UNIQUE index_name(materia);
+
+indicar que un campo "id" será la llave primaria de la tabla "tablapruebas":
+> ALTER TABLE tablapruebas ADD PRIMARY_KEY(id);
+
+crear una tabla temporal materias con primary key(id), nombre y nota:
+> CREATE TEMPORARY TABLE materias(
+	id INT NOT NULL,
+	nombre VARCHAR(255) NOT NULL,
+	NOTA INT NOT NULL DEFAULT 0,
+	PRIMARY KEY (id)
+	);
+
+importar base de datos:
+> source <database.sql>;
+donde remplazas <database.sql> por la ruta al backup, ejemplo C:/
+También podemos importar bases de datos desde la consola (fuera del mysql):
+> mysql -u username -p databasename < filename.sql
+
+exportar base de datos desde consola (fuera del mysql):
+> mysqldump -u usuario -p nombre_base_de_datos > archivo.sql
+
+salir de mysql:
+> exit;

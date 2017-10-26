@@ -80,7 +80,7 @@
                                             <textarea class="form-control" rows="10" id="pasos"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label>Artíuculos de heladera utilizados</label>
+                                            <label>Artículos de heladera utilizados</label>
                                             <!-- deberían ser columnas -->
                                             <div class="col-6">
                                                 <label for="articles">Seleccionar Artículo:</label>
@@ -93,8 +93,16 @@
                                             <div class="col-6">
                                                 <label for="cantidad">Cantidad</label>
                                                 <input type="number" name="cantidad" />
-                                                <input type="submit" value="Insertar artículo" />
                                             </div>
+                                            <div class="col-6">
+                                                <label for="unidad">Unidad</label>
+                                                <select class="form-control" id="unidad">
+                                                    <option>Kg</option>
+                                                    <option>Litros</option>
+                                                    <option>Unidades</option>
+                                                </select>
+                                            </div>
+                                            <input type="submit" value="Insertar artículo" />
                                             <div class="row col-12">
                                                 <table class="table table-hover">
                                                     <thead>

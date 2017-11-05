@@ -18,7 +18,8 @@
 --
 -- Table structure for table `articulo`
 --
-
+CREATE Database heladera;
+USE heladera;
 DROP TABLE IF EXISTS `articulo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

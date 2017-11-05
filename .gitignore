@@ -1,1 +1,16 @@
-.TP.mwb.bak
+.classpath
+.project
+.settings/
+src/main/generated-sources
+src/test/generated-sources
+target
+.metadata/
+src/main/xtend-gen
+bin
+xtend-gen
+RemoteSystemsTempFiles
+src/main/webapp/node_modules
+src/main/webapp/npm-debug.log
+src/main/webapp/package-lock.json
+src/main/webapp/.npm-debug.log
+src/main/webapp/.package-lock.json

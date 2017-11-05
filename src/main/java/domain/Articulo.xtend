@@ -4,18 +4,18 @@ import org.eclipse.xtend.lib.annotations.Accessors
 
 @Accessors
 class Articulo {
-	var int id_articulo
-	var String nombre
-	var int cant_stock
-	var String descripcion
-	var int fk_categoria
-	var int fk_unidad
-	new(int art, String name, int stock, String desc, int cat, int uni){
-		this.id_articulo=art
-		this.nombre=name
-		this.cant_stock=stock
-		this.descripcion=desc
-		this.fk_categoria=cat
-		this.fk_unidad=uni
+	int id_articulo
+	String nombre
+	int cant_stock
+	String descripcion
+	int fk_categoria
+	int fk_unidad
+	
+	new(String nombre,int cant_stock,String descripcion,int fk_categoria,int fk_unidad){
+		this.nombre=nombre
+		this.cant_stock=cant_stock
+		this.descripcion=descripcion
+		this.fk_categoria=fk_categoria
+		this.fk_unidad=fk_unidad
 	}
 }

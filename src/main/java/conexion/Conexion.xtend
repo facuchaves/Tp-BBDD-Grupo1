@@ -20,7 +20,7 @@ class Conexion {
             // Se obtiene una conexión con la base de datos. Hay que
             // cambiar el usuario "root" y la clave "la_clave" por las
             // adecuadas a la base de datos que estemos usando.
-            var Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost:3306/mydb","root", "1234");
+            var Connection conexion = DriverManager.getConnection ("jdbc:mysql://localhost:3306/heladera","root", "admin");
             
             // Se crea un Statement, para realizar la consulta
             var Statement s = conexion.createStatement();

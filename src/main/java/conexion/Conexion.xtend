@@ -28,15 +28,15 @@ class Conexion {
             // Se realiza la consulta. Los resultados se guardan en el 
             // ResultSet rs
            var ResultSet rs = s.executeQuery ("select * from cliente");
-            var List<Cliente> clientes = new ArrayList<Cliente>();
+     //		var List<Cliente> clientes = new ArrayList<Cliente>();
             // Se recorre el ResultSet, mostrando por pantalla los resultados.
             while (rs.next())
             {
-            	clientes.add(new Cliente(rs.getInt ("idCliente"),rs.getString (2),rs.getString(3)));
+   	//		clientes.add(new Cliente(rs.getInt ("idCliente"),rs.getString (2),rs.getString(3)));
             }
          
             // Se cierra la conexión con la base de datos.
-            System.out.println(clientes.size());
+    //		System.out.println(clientes.size());
             conexion.close();
         }
         catch (Exception e)

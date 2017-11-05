@@ -1,13 +1,13 @@
 package conexion
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.DriverManager
+import java.sql.Connection
+import java.sql.Statement
+import java.sql.ResultSet
 
-
-
-class Conexion {
-	
+class Conexion {	
 	
 		def static void main(String[] args){
 		
@@ -27,16 +27,18 @@ class Conexion {
             
             // Se realiza la consulta. Los resultados se guardan en el 
             // ResultSet rs
-           var ResultSet rs = s.executeQuery ("select * from cliente");
-     //		var List<Cliente> clientes = new ArrayList<Cliente>();
+           var ResultSet rs = s.executeQuery ("select * from articulo");
+     		var List<PruebaArticulo> articles = new ArrayList<PruebaArticulo>();
             // Se recorre el ResultSet, mostrando por pantalla los resultados.
             while (rs.next())
             {
-   	//		clientes.add(new Cliente(rs.getInt ("idCliente"),rs.getString (2),rs.getString(3)));
+            	var articulo = new PruebaArticulo(rs.getInt("id_articulo"), rs.getString(2), rs.getInt(3))
+  				articles.add(articulo);
+  				println("id: " + articulo.id_articulo + ", nombre: " + articulo.nombre + ", stock: " + articulo.stock)
             }
          
             // Se cierra la conexión con la base de datos.
-    //		System.out.println(clientes.size());
+    		System.out.println(articles.size());
             conexion.close();
         }
         catch (Exception e)

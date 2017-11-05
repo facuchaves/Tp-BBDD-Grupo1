@@ -8,12 +8,12 @@ class UnidadesRepo {
 	
 	new(){
 		unidades=#[
-			new Unidad("Kilo", null, 1),
-			new Unidad("Unidad", null, 1),
-			new Unidad("Gramos", null, 1),
-			new Unidad("Litros", null, 1)
+			new Unidad("Kilo", null),
+			new Unidad("Unidad", null),
+			new Unidad("Gramos", null),
+			new Unidad("Litros", null)
 		]
 	}
 }
 
-//String nombre,String descripcion,int fk_configuracion
+//String nombre,String descripcion

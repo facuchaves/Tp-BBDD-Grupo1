@@ -8,6 +8,7 @@ class Sector {
 	String nombre
 	String descripcion
 	int fk_configuracion
+	
 	new(String nombre,String descripcion,int fk_configuracion){
 		this.nombre=nombre
 		this.descripcion=descripcion

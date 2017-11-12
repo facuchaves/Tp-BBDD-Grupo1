@@ -1,0 +1,1 @@
+ALTER TABLE heladera.articulo MODIFY COLUMN cant_stock DOUBLE NULL;

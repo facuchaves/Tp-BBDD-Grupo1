@@ -15,4 +15,10 @@ class Receta {
 		this.descripcion=descripcion
 		this.pasos=pasos
 	}
+	
+	new(String titulo,String descripcion,String pasos){
+		this.titulo=titulo
+		this.descripcion=descripcion
+		this.pasos=pasos
+	}
 }

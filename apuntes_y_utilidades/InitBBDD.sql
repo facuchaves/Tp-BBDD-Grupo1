@@ -96,10 +96,10 @@ ENGINE = InnoDB;
 -- Table `heladera`.`receta`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladera`.`receta` (
-  `id_receta` INT NOT NULL,
+  `id_receta` INT NOT NULL AUTO_INCREMENT,
   `titulo` VARCHAR(45) NULL,
   `descripcion` VARCHAR(255) NULL,
-  `pasos` VARCHAR(255) NULL,
+  `pasos` VARCHAR(8000) NULL,
   PRIMARY KEY (`id_receta`))
 ENGINE = InnoDB;
 

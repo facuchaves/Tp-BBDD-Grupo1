@@ -5,6 +5,7 @@ import org.uqbar.arena.widgets.Button
 import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.Window
 import org.uqbar.arena.windows.WindowOwner
+import modelo.RecetaModelo
 
 class HeladeraWindow extends Window<Object> {
 
@@ -23,7 +24,7 @@ class HeladeraWindow extends Window<Object> {
 		]
 		new Button(mainPanel) => [
 			caption = "Recetas"
-			//onClick([|this.multiple()])
+			onClick([|(new RecetasWindow(this,  new RecetaModelo() )).open()])
 		]
 
 	}

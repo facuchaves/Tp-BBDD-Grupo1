@@ -150,6 +150,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `heladera`.`receta_has_articulo` (
   `receta_id_receta` INT NOT NULL,
   `articulo_id_articulo` INT NOT NULL,
+  `cantidad_necesaria` INT NOT NULL,
   PRIMARY KEY (`receta_id_receta`, `articulo_id_articulo`),
   INDEX `fk_receta_has_articulo_articulo1_idx` (`articulo_id_articulo` ASC),
   INDEX `fk_receta_has_articulo_receta1_idx` (`receta_id_receta` ASC),

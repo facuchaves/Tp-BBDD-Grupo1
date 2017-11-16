@@ -1,5 +1,5 @@
 -- MySQL Workbench Forward Engineering
-
+DROP DATABASE IF EXISTS heladera;
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
@@ -72,7 +72,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `heladera`.`articulo` (
   `id_articulo` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
-  `cant_stock` INT NULL,
+  `cant_stock` NUMERIC(5,2) NULL,
   `descripcion` VARCHAR(45) NULL,
   `categoria_id_categoria` INT NOT NULL,
   `unidad_id_unidad` INT NOT NULL,
@@ -150,7 +150,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `heladera`.`receta_has_articulo` (
   `receta_id_receta` INT NOT NULL,
   `articulo_id_articulo` INT NOT NULL,
-  `cantidad_necesaria` INT NOT NULL,
+  `cantidad_necesaria` NUMERIC(5,2) NOT NULL,
   PRIMARY KEY (`receta_id_receta`, `articulo_id_articulo`),
   INDEX `fk_receta_has_articulo_articulo1_idx` (`articulo_id_articulo` ASC),
   INDEX `fk_receta_has_articulo_receta1_idx` (`receta_id_receta` ASC),
@@ -211,7 +211,7 @@ INSERT INTO `heladera`.`articulo`(`id_articulo`,`nombre`,`cant_stock`,`descripci
 #Queso
 INSERT INTO `heladera`.`articulo`(`id_articulo`,`nombre`,`cant_stock`,`descripcion`,`categoria_id_categoria`,`unidad_id_unidad`)VALUES(7,'Queso',5,'Queso',(select id_categoria from heladera.categoria WHERE nombre = 'Lacteos'),(select id_unidad from heladera.unidad WHERE nombre = 'Kilos'));
 #Manteca
-INSERT INTO `heladera`.`articulo`(`id_articulo`,`nombre`,`cant_stock`,`descripcion`,`categoria_id_categoria`,`unidad_id_unidad`)VALUES(8,'Manteaca',100,'Manteca',(select id_categoria from heladera.categoria WHERE nombre = 'Lacteos'),(select id_unidad from heladera.unidad WHERE nombre = 'Gramos'));
+INSERT INTO `heladera`.`articulo`(`id_articulo`,`nombre`,`cant_stock`,`descripcion`,`categoria_id_categoria`,`unidad_id_unidad`)VALUES(8,'Manteca',100,'Manteca',(select id_categoria from heladera.categoria WHERE nombre = 'Lacteos'),(select id_unidad from heladera.unidad WHERE nombre = 'Gramos'));
 
 #Cocacola
 INSERT INTO `heladera`.`articulo`(`id_articulo`,`nombre`,`cant_stock`,`descripcion`,`categoria_id_categoria`,`unidad_id_unidad`)VALUES(9,'Cocacola',1,'Cocacola',(select id_categoria from heladera.categoria WHERE nombre = 'Bebidas'),(select id_unidad from heladera.unidad WHERE nombre = 'Cantidad Unitaria'));

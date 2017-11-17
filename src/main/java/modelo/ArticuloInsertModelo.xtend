@@ -35,9 +35,12 @@ class ArticuloInsertModelo {
 				+ this.nombre + "', '" + this.cant_stock + "', '" + this.descripcion  + "', '" + this.categoriaSeleccionada.id_categoria  + "', '" + this.unidadSeleccionada.id_unidad + "');"
 			);
 			
+			println('Artículo insertado correctamente')
+			
 			conexion.close();
+			
 			}catch(Exception e){
-				e.printStackTrace();
+				println('No se puede insertar el artículo')
 			}
 		}
 	}

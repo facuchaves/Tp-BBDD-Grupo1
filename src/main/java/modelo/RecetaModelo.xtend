@@ -28,10 +28,8 @@ class RecetaModelo {
 	
 	def instanciarReceta(){
 		if(this.titulo===null || this.titulo==""){
-			//crear ventana que contenga este mensaje
 			println('No tiene titulo')
 		}else if(pasos===null || pasos==""){
-			//crear ventana que contenga este mensaje
 			println('No tiene pasos')
 		}else{
 			try{
@@ -47,7 +45,7 @@ class RecetaModelo {
 			
 			conexion.close();
 			}catch(Exception e){
-				e.printStackTrace();
+				println('No se puede ingresar la receta')
 			}
 		}
 	}
@@ -70,7 +68,7 @@ class RecetaModelo {
 			conexion.close();
 			
 		}catch(Exception e){
-			e.printStackTrace();
+			println('No se pueden obtener los artículos')
 		}
 		
 		articulosListados

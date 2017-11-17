@@ -3,7 +3,9 @@ package conexion
 import org.uqbar.arena.aop.windows.TransactionalDialog
 import org.uqbar.arena.layout.HorizontalLayout
 import org.uqbar.arena.widgets.Button
+import org.uqbar.arena.widgets.Label
 import org.uqbar.arena.widgets.Panel
+import org.uqbar.arena.widgets.TextBox
 import org.uqbar.arena.widgets.tables.Column
 import org.uqbar.arena.widgets.tables.Table
 import org.uqbar.arena.windows.WindowOwner
@@ -52,6 +54,12 @@ class ArticulosWindow extends TransactionalDialog<Conexion> {
 			bindContentsToProperty("nombreUnidad")
 		]
 		
+		new Label(top).text = "Fecha: "
+		new TextBox(top) => [
+		    value <=> "fecha"
+		    width = 100 
+		]
+		
 		new Button(top) => [
 			caption = "Agrupar por Unidad"
 			onClick(|this.modelObject.obtenerArticulosAgrupadosPorUnidad())
@@ -60,6 +68,11 @@ class ArticulosWindow extends TransactionalDialog<Conexion> {
 		new Button(top) => [
 			caption = "Agrupar por Categoria"
 			onClick(|this.modelObject.obtenerArticulosAgrupadosPorCategoria())
+		]
+		
+		new Button(top) => [
+			caption = "Agrupar por Categoria y Unidad"
+			onClick(|this.modelObject.obtenerArticulosAgrupadosPorUnidadYCategoria())
 		]
 
 	}

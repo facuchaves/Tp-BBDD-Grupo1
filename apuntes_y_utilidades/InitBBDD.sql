@@ -18,7 +18,7 @@ USE `heladera` ;
 -- Table `heladera`.`compra`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladera`.`compra` (
-  `id_compra` INT NOT NULL,
+  `id_compra` INT NOT NULL AUTO_INCREMENT,
   `fecha_compra` DATETIME NULL,
   PRIMARY KEY (`id_compra`))
 ENGINE = InnoDB;
@@ -28,7 +28,7 @@ ENGINE = InnoDB;
 -- Table `heladera`.`configuracion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladera`.`configuracion` (
-  `id_configuracion` INT NOT NULL,
+  `id_configuracion` INT NOT NULL AUTO_INCREMENT,
   `maximo` INT NULL,
   `minimo` INT NULL,
   `default` TINYINT NULL,
@@ -41,7 +41,7 @@ ENGINE = InnoDB;
 -- Table `heladera`.`categoria`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladera`.`categoria` (
-  `id_categoria` INT NOT NULL,
+  `id_categoria` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `descripcion` VARCHAR(45) NULL,
   `configuracion_id_configuracion` INT NOT NULL,
@@ -59,7 +59,7 @@ ENGINE = InnoDB;
 -- Table `heladera`.`unidad`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladera`.`unidad` (
-  `id_unidad` INT NOT NULL,
+  `id_unidad` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `descripcion` VARCHAR(45) NULL,
   PRIMARY KEY (`id_unidad`))
@@ -70,7 +70,7 @@ ENGINE = InnoDB;
 -- Table `heladera`.`articulo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladera`.`articulo` (
-  `id_articulo` INT NOT NULL,
+  `id_articulo` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `cant_stock` NUMERIC(5,2) NULL,
   `descripcion` VARCHAR(45) NULL,
@@ -108,7 +108,7 @@ ENGINE = InnoDB;
 -- Table `heladera`.`sector`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `heladera`.`sector` (
-  `id_sector` INT NOT NULL,
+  `id_sector` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `descripcion` VARCHAR(45) NULL,
   `configuracion_id_configuracion` INT NOT NULL,

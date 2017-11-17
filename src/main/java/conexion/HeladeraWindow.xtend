@@ -6,6 +6,7 @@ import org.uqbar.arena.widgets.Panel
 import org.uqbar.arena.windows.Window
 import org.uqbar.arena.windows.WindowOwner
 import modelo.RecetaModelo
+import modelo.ArticuloInsertModelo
 
 class HeladeraWindow extends Window<Object> {
 
@@ -19,8 +20,12 @@ class HeladeraWindow extends Window<Object> {
 		mainPanel.layout = new HorizontalLayout
 
 		new Button(mainPanel) => [
-			caption = "Articulos"
+			caption = "Artículos"
 			onClick([|(new ArticulosWindow(this,  new Conexion() )).open()])
+		]
+		new Button(mainPanel) => [
+			caption = "Nuevo artículo"
+			onClick([|(new ArticuloInsertWindow(this,  new ArticuloInsertModelo() )).open()])
 		]
 		new Button(mainPanel) => [
 			caption = "Recetas"

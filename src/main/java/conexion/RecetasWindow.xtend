@@ -42,19 +42,25 @@ class RecetasWindow extends TransactionalDialog<RecetaModelo> {
 		    width = 200 
 		]
 		
-//		new Label(top).text = "Artículos: "
-//	    new List(top) => [
-//	            items <=> "getArticulosListados"
-//	            value <=> "articuloSeleccionado"
-//	            width = 200
-//	            height = 100
-//	    ]
+		new Label(top).text = "Artículos: "
+	    new List(top) => [
+	            items <=> "articulosListados"
+	            value <=> "articuloSeleccionado"
+	            width = 200
+	            height = 100
+	    ]
+		new List(top) => [
+	            items <=> "articulosAgregados"
+	            value <=> "articulo"
+	            width = 200
+	            height = 100
+	    ]
 		
 		var Panel bottom = new Panel(mainPanel).layout = new HorizontalLayout
-//		new Button(bottom) => [
-//			caption = "Agregar artículo"
-//			onClick(|this.modelObject.agregarArticulo())
-//		]
+		new Button(bottom) => [
+			caption = "Agregar artículo a la lista"
+			onClick(|this.modelObject.agregarArticulo())
+		]
 		new Button(bottom) => [
 			caption = "Instanciar receta"
 			onClick(|this.modelObject.instanciarReceta())

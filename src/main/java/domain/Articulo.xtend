@@ -6,12 +6,12 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class Articulo {
 	int id_articulo
 	String nombre
-	int cant_stock
+	Double cant_stock
 	String descripcion
 	int fk_categoria
 	int fk_unidad
 	
-	new(String nombre,int cant_stock,String descripcion,int fk_categoria,int fk_unidad){
+	new(String nombre,Double cant_stock,String descripcion,int fk_categoria,int fk_unidad){
 		this.nombre=nombre
 		this.cant_stock=cant_stock
 		this.descripcion=descripcion
@@ -19,7 +19,7 @@ class Articulo {
 		this.fk_unidad=fk_unidad
 	}
 	
-	new(int id_articulo, String nombre,int cant_stock,String descripcion,int fk_categoria,int fk_unidad){
+	new(int id_articulo, String nombre,Double cant_stock,String descripcion,int fk_categoria,int fk_unidad){
 		this.id_articulo=id_articulo
 		this.nombre=nombre
 		this.cant_stock=cant_stock

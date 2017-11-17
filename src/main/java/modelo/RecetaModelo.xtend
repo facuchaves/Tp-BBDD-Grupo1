@@ -36,7 +36,9 @@ class RecetaModelo {
 			var int idMax
 			try{
 				idMaxRs = idMaxSt.executeQuery("SELECT MAX(id_articulo) as maxId FROM articulo;");
-				idMax=idMaxRs.getInt("maxId");
+				while(idMaxRs.next()){
+					idMax=idMaxRs.getInt("maxId");
+				}
 			}catch(Exception e){
 				println('No se pudo conseguir el máximo id_articulo ' + idMaxRs)
 			}
@@ -45,7 +47,7 @@ class RecetaModelo {
 				resultSet = statement.executeQuery("SELECT id_articulo,nombre,cant_stock,descripcion,categoria_id_categoria,unidad_id_unidad FROM articulo;");
 				while(resultSet.next()){
 					this.articulosListados.add(new Articulo(resultSet.getInt("id_articulo"),resultSet.getString("nombre"),
-								resultSet.getInt("cant_stock"),resultSet.getString("descripcion"),
+								resultSet.getDouble("cant_stock"),resultSet.getString("descripcion"),
 								resultSet.getInt("categoria_id_categoria"),resultSet.getInt("unidad_id_unidad")))
 				}				
 			}catch(Exception e){
@@ -84,68 +86,42 @@ class RecetaModelo {
 				var Statement insercion= conexion.createStatement();
 				var Statement seleccion= conexion.createStatement();
 				var ResultSet rs
-				var int i
+				var int i=0
 				
 				try{
-					rs = seleccion.executeQuery("SELECT MAX(id_receta) FROM receta;")					
+					rs = seleccion.executeQuery("SELECT MAX(id_receta) as maxRec FROM receta;");				
 				}catch(Exception e){
 					println('No se pudo capturar el id_receta')
 				}
 				
 				for(i=0; i<articulosAgregados.size;i++){
 					try{
-						insercion.executeUpdate("INSERT INTO receta_has_articulo (receta_id_receta, articulo_id_articulo, cantidad_necesaria) 
-						values ('" + rs.getInt(1) + "', '" + articulosAgregados.get(1).id_articulo + "', '" + stock + "');");
-						println(rs.getInt(1) + "', '" + articulosAgregados.get(1).id_articulo + "', '" + stock)						
+						
+						insercion.executeUpdate(
+							"INSERT INTO receta_has_articulo 
+								(receta_id_receta, articulo_id_articulo, cantidad_necesaria) 
+							VALUES ('" + 
+								rs.getInt("maxRec") + "', '" + 
+								articulosAgregados.get(i).id_articulo + "', '" + 
+								articulosAgregados.get(i).cant_stock + "');"
+						);
 					}catch(Exception e){
 						println('No se pudo ingresar el artículo: ' + articulosAgregados.get(i))
-					}	
+					}
+					println(rs.getInt(i) + "', '" + articulosAgregados.get(i).id_articulo + "', '" + articulosAgregados.get(i).cant_stock)
 				}
-				
 				conexion.close()
 			}catch(Exception e){
 				println('ERROR: No se pudieron ingresar los artículos de la receta')
 			}
 		}
 	}
-	
-//	def getArticulosListados(){
-//		try{
-//			// Abrimos la conexión ahora que la vamos a usar
-//			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
-//			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root","root");
-//			var Statement idMaxSt = conexion.createStatement();
-//			var ResultSet idMaxRs
-//			var Statement statement = conexion.createStatement();
-//			var ResultSet resultSet 
-//			var int idMax
-//			
-//			try{
-//				idMaxRs = idMaxSt.executeQuery("SELECT MAX(id_articulo) FROM articulo;")
-//				idMax=idMaxRs.getInt(1)
-//			}catch(Exception e){
-//				println('No se pudo conseguir el máximo id_articulo')
-//			}
-//			
-//			try{
-//				resultSet = statement.executeQuery("SELECT id_articulo,nombre,cant_stock,descripcion,categoria_id_categoria,unidad_id_unidad FROM articulo;");
-//				while(resultSet.next()){
-//					this.articulosListados.add(new Articulo(resultSet.getInt("id_articulo"),resultSet.getString("nombre"),
-//								resultSet.getInt("cant_stock"),resultSet.getString("descripcion"),
-//								resultSet.getInt("categoria_id_categoria"),resultSet.getInt("unidad_id_unidad")))
-//				}				
-//			}catch(Exception e){
-//				println('No se pudo agregar el artículo ' + resultSet.getString("nombre"))
-//			}
-//		}catch(Exception e){
-//			e.printStackTrace()
-//			println('ERROR: No se pudieron obtener los artículos')
-//		}
-//		articulosListados
-//	}
 
 	def agregarArticulo(){
+		articuloSeleccionado.cant_stock=stock
+		println("se setea el stock de: " + articuloSeleccionado)
 		articulosAgregados.add(articuloSeleccionado)
+		println("se agregó " + articuloSeleccionado + " a la lista de seleccionados")
 		sumarFlag()
 	}
 	@Dependencies("flag")

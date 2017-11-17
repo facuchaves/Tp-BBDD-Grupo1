@@ -62,16 +62,6 @@ class RecetasWindow extends TransactionalDialog<RecetaModelo> {
 	    ]
 	    
 	    var Panel right = new Panel(main).layout = new VerticalLayout
-//		new Label(right).text = "Categoria: "
-//	    new List(right) => [
-//	            items <=> "categoriaSeleccionada"
-//	            width = 100
-//	    ]
-//	    new Label(right).text = "Unidad: "
-//		new List(right) => [
-//	            items <=> "unidadSeleccionada"
-//	            width = 100
-//	    ]
 	    new Label(right).text = "Stock: "
 		new NumericField(right) => [
 		    value <=> "stock"

@@ -11,6 +11,7 @@ import modelo.RecetaModelo
 import org.uqbar.arena.layout.VerticalLayout
 import org.uqbar.arena.widgets.List
 import org.uqbar.arena.layout.HorizontalLayout
+import org.uqbar.arena.widgets.NumericField
 
 class RecetasWindow extends TransactionalDialog<RecetaModelo> {
 
@@ -21,44 +22,66 @@ class RecetasWindow extends TransactionalDialog<RecetaModelo> {
 
 	override protected createFormPanel(Panel mainPanel) {
 		this.title = "Recetas"
-
-		var Panel top = new Panel(mainPanel).layout = new VerticalLayout
-		new Label(top).text = "Titulo: "
-		new TextBox(top) => [
+		
+		var Panel title= new Panel(mainPanel).layout = new HorizontalLayout
+		new Label(title).text = "RECETAS"
+		
+		var Panel main= new Panel(mainPanel).layout = new HorizontalLayout
+				
+		var Panel left = new Panel(main).layout = new VerticalLayout
+		new Label(left).text = "Titulo: "
+		new TextBox(left) => [
 		    value <=> "titulo"
 		    width = 200 
 		]
-		
-		new Label(top).text = "Descripcion: "
-		new TextBox(top) => [
+		new Label(left).text = "Descripcion: "
+		new TextBox(left) => [
 		    value <=> "descripcion"
 		    width = 200
 		]
-		
-		new Label(top).text = "Pasos: "
-		new TextBox(top) => [
+		new Label(left).text = "Pasos: "
+		new TextBox(left) => [
 		    value <=> "pasos"
 		    height = 150
 		    width = 200 
 		]
 		
-		new Label(top).text = "Artículos: "
-	    new List(top) => [
+		var Panel center = new Panel(main).layout = new VerticalLayout
+		new Label(center).text = "Listado de artículos: "
+	    new List(center) => [
 	            items <=> "articulosListados"
 	            value <=> "articuloSeleccionado"
 	            width = 200
 	            height = 100
 	    ]
-		new List(top) => [
+	    new Label(center).text = "Artículos de la receta: "
+		new List(center) => [
 	            items <=> "articulosAgregados"
-	            value <=> "articulo"
 	            width = 200
 	            height = 100
 	    ]
+	    
+	    var Panel right = new Panel(main).layout = new VerticalLayout
+//		new Label(right).text = "Categoria: "
+//	    new List(right) => [
+//	            items <=> "categoriaSeleccionada"
+//	            width = 100
+//	    ]
+//	    new Label(right).text = "Unidad: "
+//		new List(right) => [
+//	            items <=> "unidadSeleccionada"
+//	            width = 100
+//	    ]
+	    new Label(right).text = "Stock: "
+		new NumericField(right) => [
+		    value <=> "stock"
+		    width = 100
+		]
+	    
 		
 		var Panel bottom = new Panel(mainPanel).layout = new HorizontalLayout
 		new Button(bottom) => [
-			caption = "Agregar artículo a la lista"
+			caption = "Agregar artículo a la receta"
 			onClick(|this.modelObject.agregarArticulo())
 		]
 		new Button(bottom) => [

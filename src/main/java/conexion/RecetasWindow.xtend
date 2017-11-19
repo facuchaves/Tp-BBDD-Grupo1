@@ -75,7 +75,7 @@ class RecetasWindow extends TransactionalDialog<RecetaModelo> {
 			onClick(|this.modelObject.agregarArticulo())
 		]
 		new Button(bottom) => [
-			caption = "Instanciar receta"
+			caption = "Insertar receta"
 			onClick(|this.modelObject.instanciarReceta())
 		]
 

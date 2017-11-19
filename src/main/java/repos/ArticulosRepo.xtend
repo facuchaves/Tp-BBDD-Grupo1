@@ -8,7 +8,7 @@ class ArticulosRepo {
 	
 	new(){
 		articulos=#[
-			new Articulo("Carne", 200, null, 1, 5)
+			new Articulo("Carne", 200d, null, 1, 5)
 		]
 	}
 }

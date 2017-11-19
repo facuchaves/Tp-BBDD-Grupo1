@@ -8,6 +8,9 @@ import org.uqbar.commons.model.annotations.Observable
 import java.sql.DriverManager
 import java.sql.Connection
 import java.sql.Statement
+import java.sql.ResultSet
+import java.util.List
+import org.uqbar.commons.model.annotations.Dependencies
 
 @Accessors
 @Observable
@@ -18,6 +21,57 @@ class ArticuloInsertModelo {
 	String descripcion
 	Categoria categoriaSeleccionada
 	Unidad unidadSeleccionada
+	List<Unidad> unidadesListadas=newArrayList
+	List<Categoria> categoriasListadas=newArrayList
+	int flag = 0
+	
+	new(){
+		try{
+			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root","root");
+			var Statement statement = conexion.createStatement();
+			var ResultSet resultSet 
+			
+			try{
+				resultSet = statement.executeQuery("SELECT id_unidad,nombre,descripcion FROM unidad;");
+				while(resultSet.next()){
+					this.unidadesListadas.add(new Unidad(resultSet.getInt("id_unidad"),
+								resultSet.getString("nombre"),
+								resultSet.getString("descripcion")))
+				}
+			}catch(Exception e){
+				println('No se pudo agregar la unidad ' + resultSet.getString("nombre"))
+				e.printStackTrace()
+			}
+			conexion.close
+		}catch(Exception e){
+			println('ERROR: No se pudieron obtener las unidades')
+			e.printStackTrace()
+		}
+		try{
+			DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
+			var Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/heladera", "root","root");
+			var Statement statement = conexion.createStatement();
+			var ResultSet resultSet 
+			
+			try{
+				resultSet = statement.executeQuery("SELECT id_categoria,nombre,descripcion,configuracion_id_configuracion FROM categoria;");
+				while(resultSet.next()){
+					this.categoriasListadas.add(new Categoria(resultSet.getInt("id_categoria"),
+								resultSet.getString("nombre"),
+								resultSet.getString("descripcion"),
+								resultSet.getInt("configuracion_id_configuracion")))
+				}
+			}catch(Exception e){
+				println('No se pudo agregar la catergoria ' + resultSet.getString("nombre"))
+				e.printStackTrace()
+			}
+			conexion.close
+		}catch(Exception e){
+			println('ERROR: No se pudieron obtener las categorias')
+			e.printStackTrace()
+		}
+	}
 	
 	def insertarArticulo(){
 		if(this.nombre===null || this.nombre==""){
@@ -45,24 +99,17 @@ class ArticuloInsertModelo {
 		}
 	}
 	
+	@Dependencies("flag")
 	def getCategorias(){
-		var categorias=#[
-			new Categoria(1,"Carnes", null,1),
-			new Categoria(2,"Lacteos", null,2),
-			new Categoria(3,"Bebidas", null,3),
-			new Categoria(4,"Otros", null,4)
-		]
-		return categorias
+		this.categoriasListadas
 	}
 	
+	@Dependencies("flag")
 	def getUnidades(){
-		var unidades=#[
-			new Unidad(1,"Kilo", null),
-			new Unidad(2,"Unidad", null),
-			new Unidad(3,"Gramos", null),
-			new Unidad(4,"Litros", null)
-		]
-		return unidades
+		this.unidadesListadas
 	}
-	
+
+	def sumarFlag(){
+		flag++
+	}
 }

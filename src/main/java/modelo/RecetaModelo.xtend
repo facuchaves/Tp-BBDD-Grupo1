@@ -18,12 +18,12 @@ class RecetaModelo {
 	String titulo
 	String descripcion
 	String pasos
-	Articulo articuloSeleccionado
-	Double stock
+	Articulo articuloSeleccionado=null
+	Double stock=0d
 	List<Articulo> articulosAgregados=newArrayList
-	int flag = 0
 	List<Articulo> articulosListados=newArrayList
-	
+	int flag = 0
+
 	new(){
 		try{
 			// Abrimos la conexión ahora que la vamos a usar
@@ -49,15 +49,15 @@ class RecetaModelo {
 					this.articulosListados.add(new Articulo(resultSet.getInt("id_articulo"),resultSet.getString("nombre"),
 								resultSet.getDouble("cant_stock"),resultSet.getString("descripcion"),
 								resultSet.getInt("categoria_id_categoria"),resultSet.getInt("unidad_id_unidad")))
-				}				
+				}
 			}catch(Exception e){
 				println('No se pudo agregar el artículo ' + resultSet.getString("nombre"))
+				e.printStackTrace()
 			}
 		}catch(Exception e){
-			e.printStackTrace()
 			println('ERROR: No se pudieron obtener los artículos')
+			e.printStackTrace()
 		}
-		
 	}
 	
 	def instanciarReceta(){
@@ -74,6 +74,7 @@ class RecetaModelo {
 				statement.executeUpdate("INSERT INTO receta (titulo, descripcion, pasos) values ('"
 					+ this.titulo + "', '" + this.descripcion + "', '" + this.pasos + "');"
 				);
+				println("Receta insertada correctamente")				
 				conexion.close()
 			}catch(Exception e){
 				println('ERROR: No se pudo ingresar la receta')
@@ -89,32 +90,43 @@ class RecetaModelo {
 				var int i=0
 				
 				try{
-					rs = seleccion.executeQuery("SELECT MAX(id_receta) as maxRec FROM receta;");				
+					rs = seleccion.executeQuery("SELECT MAX(id_receta) as maxRec FROM receta;");
 				}catch(Exception e){
 					println('No se pudo capturar el id_receta')
 				}
 				
-				for(i=0; i<articulosAgregados.size;i++){
+				if(rs.next()){
+					var int nroReceta = rs.getInt(1)
 					try{
-						
-						insercion.executeUpdate(
-							"INSERT INTO receta_has_articulo 
-								(receta_id_receta, articulo_id_articulo, cantidad_necesaria) 
-							VALUES ('" + 
-								rs.getInt("maxRec") + "', '" + 
-								articulosAgregados.get(i).id_articulo + "', '" + 
-								articulosAgregados.get(i).cant_stock + "');"
-						);
+						for(i=0; i<articulosAgregados.size;i++){
+							if(articulosAgregados.get(i).cant_stock>0){
+								insercion.executeUpdate(
+									"INSERT INTO receta_has_articulo 
+										(receta_id_receta, articulo_id_articulo, cantidad_necesaria) 
+									VALUES ('" + 
+										nroReceta + "', '" + 
+										articulosAgregados.get(i).id_articulo + "', '" + 
+										articulosAgregados.get(i).cant_stock + "');"
+								);
+								println("Inertado correctamente " +  articulosAgregados.get(i) + ": " + rs.getInt(1) + ", " +
+										articulosAgregados.get(i).id_articulo + ", " + articulosAgregados.get(i).cant_stock)					
+							}
+							else{
+								println('No se pudo ingresar el artículo: ' + articulosAgregados.get(i) + ". Stock nulo")
+							}
+						}
 					}catch(Exception e){
+						e.printStackTrace()
 						println('No se pudo ingresar el artículo: ' + articulosAgregados.get(i))
 					}
-					println(rs.getInt(i) + "', '" + articulosAgregados.get(i).id_articulo + "', '" + articulosAgregados.get(i).cant_stock)
-				}
 				conexion.close()
+				}
 			}catch(Exception e){
 				println('ERROR: No se pudieron ingresar los artículos de la receta')
 			}
 		}
+		this.articulosAgregados = #[]
+		sumarFlag()
 	}
 
 	def agregarArticulo(){
@@ -122,11 +134,15 @@ class RecetaModelo {
 		println("se setea el stock de: " + articuloSeleccionado)
 		articulosAgregados.add(articuloSeleccionado)
 		println("se agregó " + articuloSeleccionado + " a la lista de seleccionados")
+		stock=0d
+		articuloSeleccionado=null
 		sumarFlag()
-	}
+		println(articulosAgregados.size)
+	}	
 	@Dependencies("flag")
 	def getArticulosAgregados(){
 		this.articulosAgregados
+		
 	}
 	def sumarFlag(){
 		flag++
